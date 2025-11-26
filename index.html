@@ -25,7 +25,7 @@
 
         .page-container {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -109,12 +109,6 @@
             height: 12px;
             border-radius: 50%;
             background: #28a745;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
         }
 
         .status-text {
@@ -150,18 +144,12 @@
         }
 
         .section-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #004080;
             margin-bottom: 5px;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .section-icon {
-            font-size: 20px;
+            text-transform: uppercase;
         }
 
         .section-description {
@@ -175,10 +163,8 @@
             background: #f8f9fa;
             border: 2px solid #004080;
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 30px;
-            max-height: 300px;
-            overflow-y: auto;
         }
 
         .job-description-box h4 {
@@ -186,15 +172,19 @@
             font-size: 14px;
             margin-bottom: 15px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .job-description-box pre {
-            white-space: pre-wrap;
+        .job-description-content {
             font-family: 'Oswald', Arial, sans-serif;
-            font-size: 12px;
+            font-size: 13px;
             color: #333333;
-            line-height: 1.6;
+            line-height: 1.8;
             font-weight: 500;
+            white-space: pre-wrap;
+            max-height: none;
+            overflow: visible;
         }
 
         /* FORM ELEMENTS */
@@ -202,6 +192,18 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+        }
+
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-row-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
         }
 
         .form-group {
@@ -218,8 +220,9 @@
             font-weight: 700;
             margin-bottom: 8px;
             color: #000000;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .form-label .required {
@@ -228,7 +231,7 @@
 
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 14px;
             background: #f8f9fa;
             border: 2px solid #004080;
             border-radius: 6px;
@@ -252,13 +255,14 @@
         }
 
         .form-textarea {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
             line-height: 1.5;
         }
 
-        .form-textarea.large {
-            min-height: 180px;
+        .form-input.readonly {
+            background: #e9ecef;
+            cursor: not-allowed;
         }
 
         .error-message {
@@ -327,11 +331,6 @@
             color: #ffffff;
         }
 
-        .page-footer a {
-            color: #a0c4e8;
-            text-decoration: none;
-        }
-
         /* SUCCESS SCREEN */
         .success-screen {
             display: none;
@@ -344,15 +343,15 @@
         .success-icon {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #28a745, #20c997);
+            background: #28a745;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 25px;
-            font-size: 50px;
+            font-size: 40px;
             color: #ffffff;
-            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+            font-weight: 700;
         }
 
         .success-screen h2 {
@@ -397,7 +396,6 @@
             font-family: 'Oswald', Arial, sans-serif;
             letter-spacing: 1px;
             margin-top: 20px;
-            transition: all 0.3s ease;
         }
 
         .new-application-btn:hover {
@@ -421,12 +419,6 @@
 
         .notification.show {
             display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
         }
 
         .notification.success {
@@ -437,14 +429,141 @@
             border-left: 5px solid #dc3545;
         }
 
-        .notification.info {
-            border-left: 5px solid #004080;
-        }
-
         .notification-text {
             color: #000000;
             font-size: 14px;
             font-weight: 600;
+        }
+
+        /* ENTRY CARDS (Education, Experience, Skills) */
+        .entry-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .entry-card:hover {
+            border-color: #004080;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #dee2e6;
+        }
+
+        .entry-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: #004080;
+            background: #e7f1ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .remove-entry-btn {
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .remove-entry-btn:hover {
+            background: #c82333;
+        }
+
+        .add-entry-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: #ffffff;
+            color: #004080;
+            border: 2px dashed #004080;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .add-entry-btn:hover {
+            background: #e7f1ff;
+            border-style: solid;
+        }
+
+        .entry-card .form-group {
+            margin-bottom: 15px;
+        }
+
+        .entry-card .form-row:last-child .form-group {
+            margin-bottom: 0;
+        }
+
+        /* SKILL ENTRY */
+        .skill-entry {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .skill-entry:hover {
+            border-color: #004080;
+        }
+
+        .skill-entry .form-group {
+            margin-bottom: 0;
+        }
+
+        .skill-remove-btn {
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            height: fit-content;
+        }
+
+        .skill-remove-btn:hover {
+            background: #c82333;
+        }
+
+        /* Duration display */
+        .duration-display {
+            background: #e7f1ff;
+            color: #004080;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: center;
+            border: 2px solid #004080;
         }
 
         /* RESPONSIVE */
@@ -457,7 +576,11 @@
                 padding: 20px;
             }
 
-            .form-row {
+            .form-row, .form-row-3, .form-row-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-entry {
                 grid-template-columns: 1fr;
             }
 
@@ -479,87 +602,6 @@
                 right: 10px;
             }
         }
-
-        /* EDUCATION ENTRIES */
-        .education-entry {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .education-entry:hover {
-            border-color: #004080;
-        }
-
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px dashed #dee2e6;
-        }
-
-        .education-number {
-            font-size: 12px;
-            font-weight: 700;
-            color: #004080;
-            background: #e7f1ff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-        }
-
-        .remove-education-btn {
-            background: #dc3545;
-            color: #ffffff;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Oswald', Arial, sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .remove-education-btn:hover {
-            background: #c82333;
-            transform: scale(1.05);
-        }
-
-        .add-education-btn {
-            width: 100%;
-            padding: 14px 20px;
-            background: #ffffff;
-            color: #004080;
-            border: 2px dashed #004080;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Oswald', Arial, sans-serif;
-            margin-bottom: 25px;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
-        .add-education-btn:hover {
-            background: #e7f1ff;
-            border-style: solid;
-        }
-
-        .education-entry .form-group {
-            margin-bottom: 15px;
-        }
-
-        .education-entry .form-row:last-child .form-group {
-            margin-bottom: 0;
-        }
     </style>
 </head>
 <body>
@@ -571,17 +613,17 @@
             <p class="tagline">Driving Data-Driven Solutions for Health and Development</p>
             <h1>JOB APPLICATION PORTAL</h1>
             <p class="subtitle">Complete the form below to apply for this position</p>
-            <div class="job-badge">🚀 NOW HIRING</div>
+            <div class="job-badge">NOW HIRING</div>
         </div>
 
         <!-- STATUS BAR -->
         <div class="status-bar">
             <div class="status-item">
-                <div class="status-indicator" id="statusIndicator"></div>
-                <span class="status-text" id="statusText">APPLICATIONS OPEN</span>
+                <div class="status-indicator"></div>
+                <span class="status-text">APPLICATIONS OPEN</span>
             </div>
             <div class="status-item">
-                <span class="deadline-badge">⏰ DEADLINE: ROLLING BASIS</span>
+                <span class="deadline-badge">DEADLINE: ROLLING BASIS</span>
             </div>
         </div>
 
@@ -591,12 +633,12 @@
                 
                 <!-- JOB DESCRIPTION -->
                 <div class="section-header">
-                    <h2 class="section-title"><span class="section-icon">📋</span> JOB DESCRIPTION</h2>
+                    <h2 class="section-title">JOB DESCRIPTION</h2>
                     <p class="section-description">Review the position requirements before applying</p>
                 </div>
 
                 <div class="job-description-box">
-                    <pre id="jobDescription"></pre>
+                    <div class="job-description-content" id="jobDescription"></div>
                 </div>
 
                 <!-- APPLICATION FORM -->
@@ -604,7 +646,7 @@
                     
                     <!-- PERSONAL INFORMATION -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">👤</span> PERSONAL INFORMATION</h2>
+                        <h2 class="section-title">PERSONAL INFORMATION</h2>
                         <p class="section-description">Your contact details</p>
                     </div>
 
@@ -636,10 +678,10 @@
                         </div>
                     </div>
 
-                    <!-- PROFESSIONAL INFORMATION -->
+                    <!-- PROFESSIONAL SUMMARY -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">💼</span> PROFESSIONAL INFORMATION</h2>
-                        <p class="section-description">Your current role and experience</p>
+                        <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                        <p class="section-description">Brief overview of your career</p>
                     </div>
 
                     <div class="form-row">
@@ -664,7 +706,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label class="form-label">PROFESSIONAL SUMMARY <span class="required">*</span></label>
                         <textarea class="form-textarea" name="summary" id="summary" required placeholder="Briefly describe your professional background, key achievements, and career goals (2-3 sentences)"></textarea>
                         <div class="helper-text">Summarize your professional profile in 2-3 sentences</div>
@@ -673,16 +715,15 @@
 
                     <!-- EDUCATION -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">🎓</span> EDUCATION</h2>
+                        <h2 class="section-title">EDUCATION</h2>
                         <p class="section-description">Your academic qualifications (add all degrees)</p>
                     </div>
 
                     <div id="educationContainer">
-                        <!-- Education Entry 1 -->
-                        <div class="education-entry" data-index="1">
-                            <div class="education-header">
-                                <span class="education-number">EDUCATION #1</span>
-                                <button type="button" class="remove-education-btn" onclick="removeEducation(this)" style="display: none;">✕ Remove</button>
+                        <div class="entry-card education-entry" data-index="1">
+                            <div class="entry-header">
+                                <span class="entry-number">EDUCATION #1</span>
+                                <button type="button" class="remove-entry-btn" onclick="removeEducation(this)" style="display: none;">Remove</button>
                             </div>
                             
                             <div class="form-row">
@@ -719,78 +760,144 @@
                         </div>
                     </div>
 
-                    <!-- Add Education Button -->
-                    <button type="button" class="add-education-btn" id="addEducationBtn" onclick="addEducation()">
-                        ➕ ADD ANOTHER DEGREE
+                    <button type="button" class="add-entry-btn" onclick="addEducation()">
+                        + ADD ANOTHER DEGREE
                     </button>
-                    
-                    <div class="error-message" id="educationError" style="margin-top: 10px;">Please complete at least one education entry</div>
 
                     <!-- WORK EXPERIENCE -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">🏢</span> WORK EXPERIENCE</h2>
-                        <p class="section-description">Your relevant work history</p>
+                        <h2 class="section-title">WORK EXPERIENCE</h2>
+                        <p class="section-description">Your employment history (add all relevant positions)</p>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label class="form-label">WORK EXPERIENCE DETAILS <span class="required">*</span></label>
-                        <textarea class="form-textarea large" name="workExperience" id="workExperience" required placeholder="List your relevant work experience:
+                    <div id="experienceContainer">
+                        <div class="entry-card experience-entry" data-index="1">
+                            <div class="entry-header">
+                                <span class="entry-number">EXPERIENCE #1</span>
+                                <button type="button" class="remove-entry-btn" onclick="removeExperience(this)" style="display: none;">Remove</button>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">JOB TITLE <span class="required">*</span></label>
+                                    <input type="text" class="form-input experience-field" name="jobTitle_1" required placeholder="e.g., Software Developer">
+                                </div>
 
-• Job Title - Company Name (Start Year - End Year)
-  Key responsibilities and achievements
+                                <div class="form-group">
+                                    <label class="form-label">COMPANY/ORGANIZATION <span class="required">*</span></label>
+                                    <input type="text" class="form-input experience-field" name="company_1" required placeholder="e.g., Tech Solutions Ltd">
+                                </div>
+                            </div>
 
-Example:
-• Software Developer - Tech Solutions Ltd (2020 - 2023)
-  - Developed web applications using Python and JavaScript
-  - Led a team of 3 developers on client projects
-  - Improved system performance by 40%"></textarea>
-                        <div class="helper-text">Include job titles, company names, dates, and key responsibilities</div>
-                        <div class="error-message" id="workExperienceError">Please describe your work experience</div>
+                            <div class="form-group">
+                                <label class="form-label">JOB DUTIES <span class="required">*</span></label>
+                                <textarea class="form-textarea experience-field" name="jobDuties_1" required placeholder="Describe your main responsibilities and achievements in this role"></textarea>
+                            </div>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label class="form-label">SUPERVISOR NAME</label>
+                                    <input type="text" class="form-input experience-field" name="supervisorName_1" placeholder="e.g., John Smith">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">SUPERVISOR TEL</label>
+                                    <input type="tel" class="form-input experience-field" name="supervisorTel_1" placeholder="+232 XX XXX XXXX">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">SUPERVISOR EMAIL</label>
+                                    <input type="email" class="form-input experience-field" name="supervisorEmail_1" placeholder="supervisor@company.com">
+                                </div>
+                            </div>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label class="form-label">START DATE <span class="required">*</span></label>
+                                    <input type="month" class="form-input experience-field start-date" name="startDate_1" required onchange="calculateDuration(1)">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">END DATE <span class="required">*</span></label>
+                                    <input type="month" class="form-input experience-field end-date" name="endDate_1" required onchange="calculateDuration(1)">
+                                    <div class="helper-text">Leave current month if still working here</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">DURATION</label>
+                                    <div class="duration-display" id="duration_1">--</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <button type="button" class="add-entry-btn" onclick="addExperience()">
+                        + ADD ANOTHER EXPERIENCE
+                    </button>
 
                     <!-- SKILLS -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">🛠️</span> SKILLS & CERTIFICATIONS</h2>
-                        <p class="section-description">Your technical abilities</p>
+                        <h2 class="section-title">SKILLS</h2>
+                        <p class="section-description">Your technical and professional skills</p>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label class="form-label">TECHNICAL SKILLS <span class="required">*</span></label>
-                        <textarea class="form-textarea" name="technicalSkills" id="technicalSkills" required placeholder="List your technical skills:
+                    <div id="skillsContainer">
+                        <div class="skill-entry" data-index="1">
+                            <div class="form-group">
+                                <label class="form-label">SKILL NAME <span class="required">*</span></label>
+                                <input type="text" class="form-input skill-field" name="skillName_1" required placeholder="e.g., Python, Project Management, Excel">
+                            </div>
 
-• Programming: Python, JavaScript, Java, SQL
-• Frameworks: React, Django, Node.js
-• Databases: PostgreSQL, MongoDB
-• Tools: Git, Docker, AWS"></textarea>
-                        <div class="helper-text">Include programming languages, frameworks, tools, and technologies</div>
-                        <div class="error-message" id="technicalSkillsError">Please list your technical skills</div>
+                            <div class="form-group">
+                                <label class="form-label">LEVEL <span class="required">*</span></label>
+                                <select class="form-select skill-field" name="skillLevel_1" required>
+                                    <option value="">Select level</option>
+                                    <option value="Beginner (25%)">Beginner (25%)</option>
+                                    <option value="Intermediate (50%)">Intermediate (50%)</option>
+                                    <option value="Advanced (75%)">Advanced (75%)</option>
+                                    <option value="Expert (100%)">Expert (100%)</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="skill-remove-btn" onclick="removeSkill(this)" style="display: none;">Remove</button>
+                        </div>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label class="form-label">CERTIFICATIONS <span style="color: #666;">(Optional)</span></label>
+                    <button type="button" class="add-entry-btn" onclick="addSkill()">
+                        + ADD ANOTHER SKILL
+                    </button>
+
+                    <!-- CERTIFICATIONS -->
+                    <div class="section-header">
+                        <h2 class="section-title">CERTIFICATIONS</h2>
+                        <p class="section-description">Professional certifications (optional)</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">CERTIFICATIONS</label>
                         <textarea class="form-textarea" name="certifications" id="certifications" placeholder="List any relevant certifications:
 
-• AWS Certified Solutions Architect - Amazon (2023)
-• PMP Certification - PMI (2022)"></textarea>
+- AWS Certified Solutions Architect - Amazon (2023)
+- PMP Certification - PMI (2022)"></textarea>
                         <div class="helper-text">Include certification name, issuing organization, and year</div>
                     </div>
 
                     <!-- COVER LETTER -->
                     <div class="section-header">
-                        <h2 class="section-title"><span class="section-icon">✉️</span> COVER LETTER</h2>
-                        <p class="section-description">Tell us why you're the right fit</p>
+                        <h2 class="section-title">COVER LETTER</h2>
+                        <p class="section-description">Tell us why you are the right fit</p>
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label class="form-label">WHY ARE YOU INTERESTED IN THIS POSITION? <span class="required">*</span></label>
                         <textarea class="form-textarea" name="whyInterested" id="whyInterested" required placeholder="Explain what attracts you to this role and our company..."></textarea>
                         <div class="error-message" id="whyInterestedError">Please explain your interest in this position</div>
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label class="form-label">WHAT MAKES YOU A GOOD FIT FOR THIS ROLE? <span class="required">*</span></label>
                         <textarea class="form-textarea" name="whyGoodFit" id="whyGoodFit" required placeholder="Describe how your skills and experience align with the job requirements..."></textarea>
-                        <div class="error-message" id="whyGoodFitError">Please explain why you're a good fit</div>
+                        <div class="error-message" id="whyGoodFitError">Please explain why you are a good fit</div>
                     </div>
 
                     <div class="form-row">
@@ -809,19 +916,19 @@ Example:
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label">EXPECTED SALARY <span style="color: #666;">(Optional)</span></label>
+                            <label class="form-label">EXPECTED SALARY (Optional)</label>
                             <input type="text" class="form-input" name="expectedSalary" id="expectedSalary" placeholder="e.g., $50,000 - $60,000">
                         </div>
                     </div>
 
-                    <div class="form-group full-width">
-                        <label class="form-label">ADDITIONAL INFORMATION <span style="color: #666;">(Optional)</span></label>
-                        <textarea class="form-textarea" name="additionalInfo" id="additionalInfo" placeholder="Any other information you'd like to share (e.g., LinkedIn profile, portfolio link, references)"></textarea>
+                    <div class="form-group">
+                        <label class="form-label">ADDITIONAL INFORMATION (Optional)</label>
+                        <textarea class="form-textarea" name="additionalInfo" id="additionalInfo" placeholder="Any other information you would like to share (e.g., LinkedIn profile, portfolio link, references)"></textarea>
                     </div>
 
                     <!-- SUBMIT BUTTON -->
                     <button type="submit" class="submit-btn" id="submitBtn">
-                        📤 SUBMIT APPLICATION
+                        SUBMIT APPLICATION
                     </button>
                 </form>
             </div>
@@ -829,25 +936,25 @@ Example:
 
         <!-- SUCCESS SCREEN -->
         <div class="success-screen" id="successScreen">
-            <div class="success-icon">✓</div>
+            <div class="success-icon">OK</div>
             <h2>APPLICATION SUBMITTED!</h2>
             <p>Thank you for applying to ICF-SL.</p>
             <p>Your application has been received and is being processed.</p>
             <div class="ref-number">
                 <span id="refNumber">REF-2025-XXXX</span>
             </div>
-            <p style="color: #28a745; font-weight: 700;">📧 You will receive an email with your results after the review period.</p>
+            <p style="color: #28a745; font-weight: 700;">You will receive an email with your results after the review period.</p>
             <p style="font-size: 12px; color: #999;">Please check your inbox and spam folder for updates.</p>
             <button class="new-application-btn" onclick="location.reload()">
-                ← SUBMIT ANOTHER APPLICATION
+                SUBMIT ANOTHER APPLICATION
             </button>
         </div>
 
         <!-- FOOTER -->
         <div class="page-footer">
             <p style="font-weight: 700;">Informatics Consultancy Firm - Sierra Leone (ICF-SL)</p>
-            <p>📧 sillahmohamedkanu@gmail.com | 🌐 www.icf-sl.com</p>
-            <p>© 2025 ICF-SL. All rights reserved.</p>
+            <p>Email: sillahmohamedkanu@gmail.com | Website: www.icf-sl.com</p>
+            <p>2025 ICF-SL. All rights reserved.</p>
         </div>
     </div>
 
@@ -858,48 +965,64 @@ Example:
 
     <script>
         // ============================================
-        // CONFIGURATION - UPDATE THESE VALUES
+        // CONFIGURATION
         // ============================================
         const CONFIG = {
-            // Google Apps Script Web App URL
             SCRIPT_URL: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
             
-            // Job Description
             JOB_DESCRIPTION: `POSITION: Senior Software Engineer
 
+LOCATION: Freetown, Sierra Leone (Remote options available)
+
+DEPARTMENT: Technology & Innovation
+
+REPORTS TO: Director of Technology
+
 ABOUT THE ROLE:
-We are looking for an experienced Software Engineer to join our growing team at ICF-SL. You will be responsible for designing, developing, and maintaining high-quality software solutions for health information systems.
+We are looking for an experienced Software Engineer to join our growing team at ICF-SL. You will be responsible for designing, developing, and maintaining high-quality software solutions for health information systems across Sierra Leone and the region.
 
-RESPONSIBILITIES:
-• Design and implement scalable software solutions
-• Write clean, maintainable, and well-documented code
-• Collaborate with cross-functional teams
-• Mentor junior developers
-• Participate in code reviews
-• Troubleshoot and debug applications
+KEY RESPONSIBILITIES:
+- Design and implement scalable software solutions for health data management
+- Write clean, maintainable, and well-documented code
+- Collaborate with cross-functional teams including public health experts
+- Mentor junior developers and conduct code reviews
+- Troubleshoot and debug applications in production environments
+- Participate in system architecture decisions
+- Contribute to technical documentation and knowledge sharing
 
-REQUIREMENTS:
-• Bachelor's degree in Computer Science or related field
-• 5+ years of professional software development experience
-• Strong proficiency in JavaScript, Python, or Java
-• Experience with cloud platforms (AWS, GCP, or Azure)
-• Knowledge of databases (SQL and NoSQL)
-• Excellent problem-solving skills
-• Strong communication skills
+REQUIRED QUALIFICATIONS:
+- Bachelor's degree in Computer Science, Information Technology, or related field
+- Minimum 5 years of professional software development experience
+- Strong proficiency in at least two of: JavaScript, Python, Java, or R
+- Experience with cloud platforms (AWS, GCP, or Azure)
+- Solid understanding of databases (SQL and NoSQL)
+- Experience with RESTful API design and implementation
+- Excellent problem-solving and analytical skills
+- Strong written and verbal communication skills
 
 PREFERRED QUALIFICATIONS:
-• Master's degree in Computer Science
-• Experience with DHIS2 or health information systems
-• Experience with microservices architecture
-• Knowledge of CI/CD pipelines
-• Open source contributions
+- Master's degree in Computer Science or related field
+- Experience with DHIS2 or other health information systems
+- Knowledge of health data standards (HL7, FHIR)
+- Experience with microservices architecture
+- Familiarity with containerization (Docker, Kubernetes)
+- Knowledge of CI/CD pipelines and DevOps practices
+- Open source contributions
+- Experience working in international development or public health sector
 
 WHAT WE OFFER:
-• Competitive salary
-• Health insurance
-• Remote work options
-• Professional development opportunities
-• Opportunity to impact health systems in Sierra Leone`
+- Competitive salary commensurate with experience
+- Health insurance coverage
+- Flexible remote work options
+- Professional development opportunities
+- Opportunity to make a meaningful impact on health systems in Sierra Leone
+- Collaborative and innovative work environment
+- Annual leave and public holidays
+
+APPLICATION DEADLINE: Rolling basis until position is filled
+
+HOW TO APPLY:
+Complete this application form with all required information. Ensure your work experience and skills are accurately described to help us evaluate your candidacy.`
         };
 
         // Display job description
@@ -915,12 +1038,12 @@ WHAT WE OFFER:
             const container = document.getElementById('educationContainer');
             
             const newEntry = document.createElement('div');
-            newEntry.className = 'education-entry';
+            newEntry.className = 'entry-card education-entry';
             newEntry.setAttribute('data-index', educationCount);
             newEntry.innerHTML = `
-                <div class="education-header">
-                    <span class="education-number">EDUCATION #${educationCount}</span>
-                    <button type="button" class="remove-education-btn" onclick="removeEducation(this)">✕ Remove</button>
+                <div class="entry-header">
+                    <span class="entry-number">EDUCATION #${educationCount}</span>
+                    <button type="button" class="remove-entry-btn" onclick="removeEducation(this)">Remove</button>
                 </div>
                 
                 <div class="form-row">
@@ -957,32 +1080,23 @@ WHAT WE OFFER:
             `;
             
             container.appendChild(newEntry);
-            updateRemoveButtons();
-            
-            // Scroll to new entry
+            updateEducationRemoveButtons();
             newEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function removeEducation(button) {
             const entry = button.closest('.education-entry');
-            entry.style.opacity = '0';
-            entry.style.transform = 'translateX(-20px)';
-            
-            setTimeout(() => {
-                entry.remove();
-                renumberEducationEntries();
-                updateRemoveButtons();
-            }, 300);
+            entry.remove();
+            renumberEducation();
+            updateEducationRemoveButtons();
         }
 
-        function renumberEducationEntries() {
+        function renumberEducation() {
             const entries = document.querySelectorAll('.education-entry');
             entries.forEach((entry, index) => {
                 const num = index + 1;
                 entry.setAttribute('data-index', num);
-                entry.querySelector('.education-number').textContent = `EDUCATION #${num}`;
-                
-                // Update field names
+                entry.querySelector('.entry-number').textContent = `EDUCATION #${num}`;
                 entry.querySelectorAll('.education-field').forEach(field => {
                     const baseName = field.name.replace(/_\d+$/, '');
                     field.name = `${baseName}_${num}`;
@@ -991,18 +1105,232 @@ WHAT WE OFFER:
             educationCount = entries.length;
         }
 
-        function updateRemoveButtons() {
+        function updateEducationRemoveButtons() {
             const entries = document.querySelectorAll('.education-entry');
-            entries.forEach((entry, index) => {
-                const removeBtn = entry.querySelector('.remove-education-btn');
-                // Show remove button only if more than 1 entry
+            entries.forEach(entry => {
+                const removeBtn = entry.querySelector('.remove-entry-btn');
                 removeBtn.style.display = entries.length > 1 ? 'block' : 'none';
             });
         }
 
+        // ============================================
+        // EXPERIENCE MANAGEMENT
+        // ============================================
+        let experienceCount = 1;
+
+        function addExperience() {
+            experienceCount++;
+            const container = document.getElementById('experienceContainer');
+            
+            const newEntry = document.createElement('div');
+            newEntry.className = 'entry-card experience-entry';
+            newEntry.setAttribute('data-index', experienceCount);
+            newEntry.innerHTML = `
+                <div class="entry-header">
+                    <span class="entry-number">EXPERIENCE #${experienceCount}</span>
+                    <button type="button" class="remove-entry-btn" onclick="removeExperience(this)">Remove</button>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">JOB TITLE <span class="required">*</span></label>
+                        <input type="text" class="form-input experience-field" name="jobTitle_${experienceCount}" required placeholder="e.g., Software Developer">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">COMPANY/ORGANIZATION <span class="required">*</span></label>
+                        <input type="text" class="form-input experience-field" name="company_${experienceCount}" required placeholder="e.g., Tech Solutions Ltd">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">JOB DUTIES <span class="required">*</span></label>
+                    <textarea class="form-textarea experience-field" name="jobDuties_${experienceCount}" required placeholder="Describe your main responsibilities and achievements in this role"></textarea>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label class="form-label">SUPERVISOR NAME</label>
+                        <input type="text" class="form-input experience-field" name="supervisorName_${experienceCount}" placeholder="e.g., John Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">SUPERVISOR TEL</label>
+                        <input type="tel" class="form-input experience-field" name="supervisorTel_${experienceCount}" placeholder="+232 XX XXX XXXX">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">SUPERVISOR EMAIL</label>
+                        <input type="email" class="form-input experience-field" name="supervisorEmail_${experienceCount}" placeholder="supervisor@company.com">
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label class="form-label">START DATE <span class="required">*</span></label>
+                        <input type="month" class="form-input experience-field start-date" name="startDate_${experienceCount}" required onchange="calculateDuration(${experienceCount})">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">END DATE <span class="required">*</span></label>
+                        <input type="month" class="form-input experience-field end-date" name="endDate_${experienceCount}" required onchange="calculateDuration(${experienceCount})">
+                        <div class="helper-text">Leave current month if still working here</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">DURATION</label>
+                        <div class="duration-display" id="duration_${experienceCount}">--</div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newEntry);
+            updateExperienceRemoveButtons();
+            newEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function removeExperience(button) {
+            const entry = button.closest('.experience-entry');
+            entry.remove();
+            renumberExperience();
+            updateExperienceRemoveButtons();
+        }
+
+        function renumberExperience() {
+            const entries = document.querySelectorAll('.experience-entry');
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                entry.setAttribute('data-index', num);
+                entry.querySelector('.entry-number').textContent = `EXPERIENCE #${num}`;
+                
+                entry.querySelectorAll('.experience-field').forEach(field => {
+                    const baseName = field.name.replace(/_\d+$/, '');
+                    field.name = `${baseName}_${num}`;
+                    
+                    if (field.classList.contains('start-date') || field.classList.contains('end-date')) {
+                        field.setAttribute('onchange', `calculateDuration(${num})`);
+                    }
+                });
+                
+                const durationDiv = entry.querySelector('.duration-display');
+                if (durationDiv) durationDiv.id = `duration_${num}`;
+            });
+            experienceCount = entries.length;
+        }
+
+        function updateExperienceRemoveButtons() {
+            const entries = document.querySelectorAll('.experience-entry');
+            entries.forEach(entry => {
+                const removeBtn = entry.querySelector('.remove-entry-btn');
+                removeBtn.style.display = entries.length > 1 ? 'block' : 'none';
+            });
+        }
+
+        function calculateDuration(index) {
+            const startInput = document.querySelector(`[name="startDate_${index}"]`);
+            const endInput = document.querySelector(`[name="endDate_${index}"]`);
+            const durationDiv = document.getElementById(`duration_${index}`);
+            
+            if (startInput.value && endInput.value) {
+                const start = new Date(startInput.value);
+                const end = new Date(endInput.value);
+                
+                if (end >= start) {
+                    let months = (end.getFullYear() - start.getFullYear()) * 12;
+                    months += end.getMonth() - start.getMonth();
+                    
+                    const years = Math.floor(months / 12);
+                    const remainingMonths = months % 12;
+                    
+                    let duration = '';
+                    if (years > 0) {
+                        duration += years + (years === 1 ? ' year' : ' years');
+                    }
+                    if (remainingMonths > 0) {
+                        if (years > 0) duration += ', ';
+                        duration += remainingMonths + (remainingMonths === 1 ? ' month' : ' months');
+                    }
+                    if (duration === '') duration = 'Less than 1 month';
+                    
+                    durationDiv.textContent = duration;
+                } else {
+                    durationDiv.textContent = 'Invalid dates';
+                }
+            } else {
+                durationDiv.textContent = '--';
+            }
+        }
+
+        // ============================================
+        // SKILLS MANAGEMENT
+        // ============================================
+        let skillCount = 1;
+
+        function addSkill() {
+            skillCount++;
+            const container = document.getElementById('skillsContainer');
+            
+            const newEntry = document.createElement('div');
+            newEntry.className = 'skill-entry';
+            newEntry.setAttribute('data-index', skillCount);
+            newEntry.innerHTML = `
+                <div class="form-group">
+                    <label class="form-label">SKILL NAME <span class="required">*</span></label>
+                    <input type="text" class="form-input skill-field" name="skillName_${skillCount}" required placeholder="e.g., Python, Project Management, Excel">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">LEVEL <span class="required">*</span></label>
+                    <select class="form-select skill-field" name="skillLevel_${skillCount}" required>
+                        <option value="">Select level</option>
+                        <option value="Beginner (25%)">Beginner (25%)</option>
+                        <option value="Intermediate (50%)">Intermediate (50%)</option>
+                        <option value="Advanced (75%)">Advanced (75%)</option>
+                        <option value="Expert (100%)">Expert (100%)</option>
+                    </select>
+                </div>
+
+                <button type="button" class="skill-remove-btn" onclick="removeSkill(this)">Remove</button>
+            `;
+            
+            container.appendChild(newEntry);
+            updateSkillRemoveButtons();
+        }
+
+        function removeSkill(button) {
+            const entry = button.closest('.skill-entry');
+            entry.remove();
+            renumberSkills();
+            updateSkillRemoveButtons();
+        }
+
+        function renumberSkills() {
+            const entries = document.querySelectorAll('.skill-entry');
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                entry.setAttribute('data-index', num);
+                entry.querySelectorAll('.skill-field').forEach(field => {
+                    const baseName = field.name.replace(/_\d+$/, '');
+                    field.name = `${baseName}_${num}`;
+                });
+            });
+            skillCount = entries.length;
+        }
+
+        function updateSkillRemoveButtons() {
+            const entries = document.querySelectorAll('.skill-entry');
+            entries.forEach(entry => {
+                const removeBtn = entry.querySelector('.skill-remove-btn');
+                removeBtn.style.display = entries.length > 1 ? 'block' : 'none';
+            });
+        }
+
+        // ============================================
+        // DATA COLLECTION
+        // ============================================
         function collectEducationData() {
             const entries = document.querySelectorAll('.education-entry');
-            const educationList = [];
+            const list = [];
             
             entries.forEach((entry, index) => {
                 const num = index + 1;
@@ -1012,22 +1340,68 @@ WHAT WE OFFER:
                 const graduationYear = entry.querySelector(`[name="graduationYear_${num}"]`)?.value || '';
                 
                 if (degree && fieldOfStudy && institution && graduationYear) {
-                    educationList.push({
-                        degree: degree,
-                        fieldOfStudy: fieldOfStudy.trim(),
-                        institution: institution.trim(),
-                        graduationYear: graduationYear
+                    list.push(`${degree} in ${fieldOfStudy} - ${institution} (${graduationYear})`);
+                }
+            });
+            
+            return list;
+        }
+
+        function collectExperienceData() {
+            const entries = document.querySelectorAll('.experience-entry');
+            const list = [];
+            
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                const jobTitle = entry.querySelector(`[name="jobTitle_${num}"]`)?.value || '';
+                const company = entry.querySelector(`[name="company_${num}"]`)?.value || '';
+                const jobDuties = entry.querySelector(`[name="jobDuties_${num}"]`)?.value || '';
+                const supervisorName = entry.querySelector(`[name="supervisorName_${num}"]`)?.value || '';
+                const supervisorTel = entry.querySelector(`[name="supervisorTel_${num}"]`)?.value || '';
+                const supervisorEmail = entry.querySelector(`[name="supervisorEmail_${num}"]`)?.value || '';
+                const startDate = entry.querySelector(`[name="startDate_${num}"]`)?.value || '';
+                const endDate = entry.querySelector(`[name="endDate_${num}"]`)?.value || '';
+                const duration = document.getElementById(`duration_${num}`)?.textContent || '';
+                
+                if (jobTitle && company && jobDuties && startDate && endDate) {
+                    list.push({
+                        jobTitle: jobTitle.trim(),
+                        company: company.trim(),
+                        jobDuties: jobDuties.trim(),
+                        supervisorName: supervisorName.trim(),
+                        supervisorTel: supervisorTel.trim(),
+                        supervisorEmail: supervisorEmail.trim(),
+                        startDate: startDate,
+                        endDate: endDate,
+                        duration: duration
                     });
                 }
             });
             
-            return educationList;
+            return list;
         }
 
-        function formatEducationForSheet(educationList) {
-            return educationList.map((edu, index) => 
-                `${index + 1}. ${edu.degree} in ${edu.fieldOfStudy} - ${edu.institution} (${edu.graduationYear})`
-            ).join('\n');
+        function collectSkillsData() {
+            const entries = document.querySelectorAll('.skill-entry');
+            const list = [];
+            
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                const skillName = entry.querySelector(`[name="skillName_${num}"]`)?.value || '';
+                const skillLevel = entry.querySelector(`[name="skillLevel_${num}"]`)?.value || '';
+                
+                if (skillName && skillLevel) {
+                    list.push(`${skillName.trim()} - ${skillLevel}`);
+                }
+            });
+            
+            return list;
+        }
+
+        function formatExperienceForSheet(expList) {
+            return expList.map((exp, index) => 
+                `[${index + 1}] ${exp.jobTitle} at ${exp.company} (${exp.duration})\nDuties: ${exp.jobDuties}\nSupervisor: ${exp.supervisorName || 'N/A'} | Tel: ${exp.supervisorTel || 'N/A'} | Email: ${exp.supervisorEmail || 'N/A'}\nPeriod: ${exp.startDate} to ${exp.endDate}`
+            ).join('\n\n');
         }
 
         // ============================================
@@ -1038,7 +1412,6 @@ WHAT WE OFFER:
             const requiredFields = [
                 'fullName', 'email', 'phone', 'location',
                 'currentTitle', 'yearsExperience', 'summary',
-                'workExperience', 'technicalSkills',
                 'whyInterested', 'whyGoodFit', 'availability'
             ];
 
@@ -1071,35 +1444,25 @@ WHAT WE OFFER:
                 isValid = false;
             }
 
-            // Validate education entries
-            const educationEntries = document.querySelectorAll('.education-entry');
-            let hasValidEducation = false;
-            
-            educationEntries.forEach((entry, index) => {
-                const num = index + 1;
-                const degree = entry.querySelector(`[name="degree_${num}"]`);
-                const fieldOfStudy = entry.querySelector(`[name="fieldOfStudy_${num}"]`);
-                const institution = entry.querySelector(`[name="institution_${num}"]`);
-                const graduationYear = entry.querySelector(`[name="graduationYear_${num}"]`);
-                
-                const fields = [degree, fieldOfStudy, institution, graduationYear];
-                let entryComplete = true;
-                
-                fields.forEach(field => {
-                    if (field && !field.value.trim()) {
-                        field.classList.add('error');
-                        entryComplete = false;
-                    }
-                });
-                
-                if (entryComplete) {
-                    hasValidEducation = true;
-                }
-            });
-            
-            if (!hasValidEducation) {
-                document.getElementById('educationError').classList.add('show');
+            // Validate education
+            const eduData = collectEducationData();
+            if (eduData.length === 0) {
                 isValid = false;
+                showNotification('Please complete at least one education entry', 'error');
+            }
+
+            // Validate experience
+            const expData = collectExperienceData();
+            if (expData.length === 0) {
+                isValid = false;
+                showNotification('Please complete at least one work experience entry', 'error');
+            }
+
+            // Validate skills
+            const skillsData = collectSkillsData();
+            if (skillsData.length === 0) {
+                isValid = false;
+                showNotification('Please add at least one skill', 'error');
             }
 
             return isValid;
@@ -1112,19 +1475,18 @@ WHAT WE OFFER:
             e.preventDefault();
 
             if (!validateForm()) {
-                showNotification('Please fill in all required fields correctly', 'error');
                 return;
             }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ SUBMITTING...';
+            submitBtn.textContent = 'SUBMITTING...';
 
             const formData = new FormData(this);
             
-            // Collect education data
             const educationList = collectEducationData();
-            const educationFormatted = formatEducationForSheet(educationList);
+            const experienceList = collectExperienceData();
+            const skillsList = collectSkillsData();
             
             const data = {
                 timestamp: new Date().toISOString(),
@@ -1135,10 +1497,12 @@ WHAT WE OFFER:
                 currentTitle: formData.get('currentTitle').trim(),
                 yearsExperience: formData.get('yearsExperience'),
                 summary: formData.get('summary').trim(),
-                education: educationFormatted,
+                education: educationList.join('\n'),
                 educationCount: educationList.length,
-                workExperience: formData.get('workExperience').trim(),
-                technicalSkills: formData.get('technicalSkills').trim(),
+                workExperience: formatExperienceForSheet(experienceList),
+                experienceCount: experienceList.length,
+                skills: skillsList.join('\n'),
+                skillsCount: skillsList.length,
                 certifications: formData.get('certifications')?.trim() || '',
                 whyInterested: formData.get('whyInterested').trim(),
                 whyGoodFit: formData.get('whyGoodFit').trim(),
@@ -1155,11 +1519,9 @@ WHAT WE OFFER:
                     body: JSON.stringify(data)
                 });
 
-                // Generate reference number
                 const refNum = 'REF-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
                 document.getElementById('refNumber').textContent = refNum;
 
-                // Show success screen
                 document.getElementById('formCard').style.display = 'none';
                 document.getElementById('successScreen').style.display = 'block';
                 showNotification('Application submitted successfully!', 'success');
@@ -1168,7 +1530,7 @@ WHAT WE OFFER:
                 console.error('Submit error:', error);
                 showNotification('Failed to submit. Please try again.', 'error');
                 submitBtn.disabled = false;
-                submitBtn.textContent = '📤 SUBMIT APPLICATION';
+                submitBtn.textContent = 'SUBMIT APPLICATION';
             }
         });
 
@@ -1191,9 +1553,6 @@ WHAT WE OFFER:
         document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
             input.addEventListener('input', function() {
                 this.classList.remove('error');
-                const errorId = this.id + 'Error';
-                const errorMsg = document.getElementById(errorId);
-                if (errorMsg) errorMsg.classList.remove('show');
             });
         });
     </script>
