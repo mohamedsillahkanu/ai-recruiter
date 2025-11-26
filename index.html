@@ -479,6 +479,87 @@
                 right: 10px;
             }
         }
+
+        /* EDUCATION ENTRIES */
+        .education-entry {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .education-entry:hover {
+            border-color: #004080;
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #dee2e6;
+        }
+
+        .education-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: #004080;
+            background: #e7f1ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .remove-education-btn {
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .remove-education-btn:hover {
+            background: #c82333;
+            transform: scale(1.05);
+        }
+
+        .add-education-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: #ffffff;
+            color: #004080;
+            border: 2px dashed #004080;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Oswald', Arial, sans-serif;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .add-education-btn:hover {
+            background: #e7f1ff;
+            border-style: solid;
+        }
+
+        .education-entry .form-group {
+            margin-bottom: 15px;
+        }
+
+        .education-entry .form-row:last-child .form-group {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -593,44 +674,57 @@
                     <!-- EDUCATION -->
                     <div class="section-header">
                         <h2 class="section-title"><span class="section-icon">🎓</span> EDUCATION</h2>
-                        <p class="section-description">Your academic qualifications</p>
+                        <p class="section-description">Your academic qualifications (add all degrees)</p>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">HIGHEST DEGREE <span class="required">*</span></label>
-                            <select class="form-select" name="degree" id="degree" required>
-                                <option value="">Select degree</option>
-                                <option value="High School">High School / Secondary</option>
-                                <option value="Diploma">Diploma / Certificate</option>
-                                <option value="Bachelor">Bachelor's Degree</option>
-                                <option value="Master">Master's Degree</option>
-                                <option value="PhD">PhD / Doctorate</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <div class="error-message" id="degreeError">Please select your degree</div>
-                        </div>
+                    <div id="educationContainer">
+                        <!-- Education Entry 1 -->
+                        <div class="education-entry" data-index="1">
+                            <div class="education-header">
+                                <span class="education-number">EDUCATION #1</span>
+                                <button type="button" class="remove-education-btn" onclick="removeEducation(this)" style="display: none;">✕ Remove</button>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">DEGREE TYPE <span class="required">*</span></label>
+                                    <select class="form-select education-field" name="degree_1" required>
+                                        <option value="">Select degree</option>
+                                        <option value="High School">High School / Secondary</option>
+                                        <option value="Diploma">Diploma / Certificate</option>
+                                        <option value="Bachelor">Bachelor's Degree</option>
+                                        <option value="Master">Master's Degree</option>
+                                        <option value="PhD">PhD / Doctorate</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                        <div class="form-group">
-                            <label class="form-label">FIELD OF STUDY <span class="required">*</span></label>
-                            <input type="text" class="form-input" name="fieldOfStudy" id="fieldOfStudy" required placeholder="e.g., Computer Science">
-                            <div class="error-message" id="fieldOfStudyError">Please enter your field of study</div>
+                                <div class="form-group">
+                                    <label class="form-label">FIELD OF STUDY <span class="required">*</span></label>
+                                    <input type="text" class="form-input education-field" name="fieldOfStudy_1" required placeholder="e.g., Computer Science">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">INSTITUTION NAME <span class="required">*</span></label>
+                                    <input type="text" class="form-input education-field" name="institution_1" required placeholder="e.g., University of Sierra Leone">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">GRADUATION YEAR <span class="required">*</span></label>
+                                    <input type="number" class="form-input education-field" name="graduationYear_1" required placeholder="e.g., 2020" min="1970" max="2030">
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">INSTITUTION NAME <span class="required">*</span></label>
-                            <input type="text" class="form-input" name="institution" id="institution" required placeholder="e.g., University of Sierra Leone">
-                            <div class="error-message" id="institutionError">Please enter your institution</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">GRADUATION YEAR <span class="required">*</span></label>
-                            <input type="number" class="form-input" name="graduationYear" id="graduationYear" required placeholder="e.g., 2020" min="1970" max="2030">
-                            <div class="error-message" id="graduationYearError">Please enter your graduation year</div>
-                        </div>
-                    </div>
+                    <!-- Add Education Button -->
+                    <button type="button" class="add-education-btn" id="addEducationBtn" onclick="addEducation()">
+                        ➕ ADD ANOTHER DEGREE
+                    </button>
+                    
+                    <div class="error-message" id="educationError" style="margin-top: 10px;">Please complete at least one education entry</div>
 
                     <!-- WORK EXPERIENCE -->
                     <div class="section-header">
@@ -812,6 +906,131 @@ WHAT WE OFFER:
         document.getElementById('jobDescription').textContent = CONFIG.JOB_DESCRIPTION;
 
         // ============================================
+        // EDUCATION MANAGEMENT
+        // ============================================
+        let educationCount = 1;
+
+        function addEducation() {
+            educationCount++;
+            const container = document.getElementById('educationContainer');
+            
+            const newEntry = document.createElement('div');
+            newEntry.className = 'education-entry';
+            newEntry.setAttribute('data-index', educationCount);
+            newEntry.innerHTML = `
+                <div class="education-header">
+                    <span class="education-number">EDUCATION #${educationCount}</span>
+                    <button type="button" class="remove-education-btn" onclick="removeEducation(this)">✕ Remove</button>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">DEGREE TYPE <span class="required">*</span></label>
+                        <select class="form-select education-field" name="degree_${educationCount}" required>
+                            <option value="">Select degree</option>
+                            <option value="High School">High School / Secondary</option>
+                            <option value="Diploma">Diploma / Certificate</option>
+                            <option value="Bachelor">Bachelor's Degree</option>
+                            <option value="Master">Master's Degree</option>
+                            <option value="PhD">PhD / Doctorate</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">FIELD OF STUDY <span class="required">*</span></label>
+                        <input type="text" class="form-input education-field" name="fieldOfStudy_${educationCount}" required placeholder="e.g., Computer Science">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">INSTITUTION NAME <span class="required">*</span></label>
+                        <input type="text" class="form-input education-field" name="institution_${educationCount}" required placeholder="e.g., University of Sierra Leone">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">GRADUATION YEAR <span class="required">*</span></label>
+                        <input type="number" class="form-input education-field" name="graduationYear_${educationCount}" required placeholder="e.g., 2020" min="1970" max="2030">
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newEntry);
+            updateRemoveButtons();
+            
+            // Scroll to new entry
+            newEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function removeEducation(button) {
+            const entry = button.closest('.education-entry');
+            entry.style.opacity = '0';
+            entry.style.transform = 'translateX(-20px)';
+            
+            setTimeout(() => {
+                entry.remove();
+                renumberEducationEntries();
+                updateRemoveButtons();
+            }, 300);
+        }
+
+        function renumberEducationEntries() {
+            const entries = document.querySelectorAll('.education-entry');
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                entry.setAttribute('data-index', num);
+                entry.querySelector('.education-number').textContent = `EDUCATION #${num}`;
+                
+                // Update field names
+                entry.querySelectorAll('.education-field').forEach(field => {
+                    const baseName = field.name.replace(/_\d+$/, '');
+                    field.name = `${baseName}_${num}`;
+                });
+            });
+            educationCount = entries.length;
+        }
+
+        function updateRemoveButtons() {
+            const entries = document.querySelectorAll('.education-entry');
+            entries.forEach((entry, index) => {
+                const removeBtn = entry.querySelector('.remove-education-btn');
+                // Show remove button only if more than 1 entry
+                removeBtn.style.display = entries.length > 1 ? 'block' : 'none';
+            });
+        }
+
+        function collectEducationData() {
+            const entries = document.querySelectorAll('.education-entry');
+            const educationList = [];
+            
+            entries.forEach((entry, index) => {
+                const num = index + 1;
+                const degree = entry.querySelector(`[name="degree_${num}"]`)?.value || '';
+                const fieldOfStudy = entry.querySelector(`[name="fieldOfStudy_${num}"]`)?.value || '';
+                const institution = entry.querySelector(`[name="institution_${num}"]`)?.value || '';
+                const graduationYear = entry.querySelector(`[name="graduationYear_${num}"]`)?.value || '';
+                
+                if (degree && fieldOfStudy && institution && graduationYear) {
+                    educationList.push({
+                        degree: degree,
+                        fieldOfStudy: fieldOfStudy.trim(),
+                        institution: institution.trim(),
+                        graduationYear: graduationYear
+                    });
+                }
+            });
+            
+            return educationList;
+        }
+
+        function formatEducationForSheet(educationList) {
+            return educationList.map((edu, index) => 
+                `${index + 1}. ${edu.degree} in ${edu.fieldOfStudy} - ${edu.institution} (${edu.graduationYear})`
+            ).join('\n');
+        }
+
+        // ============================================
         // FORM VALIDATION
         // ============================================
         function validateForm() {
@@ -819,7 +1038,6 @@ WHAT WE OFFER:
             const requiredFields = [
                 'fullName', 'email', 'phone', 'location',
                 'currentTitle', 'yearsExperience', 'summary',
-                'degree', 'fieldOfStudy', 'institution', 'graduationYear',
                 'workExperience', 'technicalSkills',
                 'whyInterested', 'whyGoodFit', 'availability'
             ];
@@ -832,11 +1050,12 @@ WHAT WE OFFER:
                 msg.classList.remove('show');
             });
 
+            // Validate standard fields
             requiredFields.forEach(fieldId => {
                 const field = document.getElementById(fieldId);
                 const errorMsg = document.getElementById(fieldId + 'Error');
                 
-                if (!field.value.trim()) {
+                if (field && !field.value.trim()) {
                     field.classList.add('error');
                     if (errorMsg) errorMsg.classList.add('show');
                     isValid = false;
@@ -849,6 +1068,37 @@ WHAT WE OFFER:
             if (email.value && !emailRegex.test(email.value)) {
                 email.classList.add('error');
                 document.getElementById('emailError').classList.add('show');
+                isValid = false;
+            }
+
+            // Validate education entries
+            const educationEntries = document.querySelectorAll('.education-entry');
+            let hasValidEducation = false;
+            
+            educationEntries.forEach((entry, index) => {
+                const num = index + 1;
+                const degree = entry.querySelector(`[name="degree_${num}"]`);
+                const fieldOfStudy = entry.querySelector(`[name="fieldOfStudy_${num}"]`);
+                const institution = entry.querySelector(`[name="institution_${num}"]`);
+                const graduationYear = entry.querySelector(`[name="graduationYear_${num}"]`);
+                
+                const fields = [degree, fieldOfStudy, institution, graduationYear];
+                let entryComplete = true;
+                
+                fields.forEach(field => {
+                    if (field && !field.value.trim()) {
+                        field.classList.add('error');
+                        entryComplete = false;
+                    }
+                });
+                
+                if (entryComplete) {
+                    hasValidEducation = true;
+                }
+            });
+            
+            if (!hasValidEducation) {
+                document.getElementById('educationError').classList.add('show');
                 isValid = false;
             }
 
@@ -871,6 +1121,11 @@ WHAT WE OFFER:
             submitBtn.textContent = '⏳ SUBMITTING...';
 
             const formData = new FormData(this);
+            
+            // Collect education data
+            const educationList = collectEducationData();
+            const educationFormatted = formatEducationForSheet(educationList);
+            
             const data = {
                 timestamp: new Date().toISOString(),
                 fullName: formData.get('fullName').trim(),
@@ -880,10 +1135,8 @@ WHAT WE OFFER:
                 currentTitle: formData.get('currentTitle').trim(),
                 yearsExperience: formData.get('yearsExperience'),
                 summary: formData.get('summary').trim(),
-                degree: formData.get('degree'),
-                fieldOfStudy: formData.get('fieldOfStudy').trim(),
-                institution: formData.get('institution').trim(),
-                graduationYear: formData.get('graduationYear'),
+                education: educationFormatted,
+                educationCount: educationList.length,
                 workExperience: formData.get('workExperience').trim(),
                 technicalSkills: formData.get('technicalSkills').trim(),
                 certifications: formData.get('certifications')?.trim() || '',
